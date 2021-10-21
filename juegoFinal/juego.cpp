@@ -21,7 +21,7 @@ Juego::Juego(QWidget *parent)
 
     QTimer *timer = new QTimer(this);
     connect( timer, SIGNAL(timeout()),this, SLOT(Mov()));
-    timer->start(10);
+    timer->start(5);
 
 }
 
@@ -40,13 +40,18 @@ void Juego::Mov()
 
 void Juego::keyPressEvent(QKeyEvent *e)
 {
-
+        int PosX = 0;
         switch (e->key()){
         case Qt::Key_A:
+            PosX=saltarin->getX();
+            saltarin->setX(PosX-2);
+
 
             break;
 
-        case Qt::Key_S:
+        case Qt::Key_D:
+            PosX=saltarin->getX();
+            saltarin->setX(PosX+2);
 
             break;
 

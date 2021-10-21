@@ -31,6 +31,14 @@ public:
 
     void setDirY(int value);
 
+    void setX(float value);
+
+    void setY(float value);
+
+    float getX() const;
+
+    float getY() const;
+
 private:
 
 
@@ -42,7 +50,8 @@ private:
     float Theta =0;
     float H =10;
 
-    float X = 0, Y = 0;
+    float X = 0;
+    float Y = 0;
 
 
 

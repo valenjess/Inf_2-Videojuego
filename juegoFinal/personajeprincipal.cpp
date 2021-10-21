@@ -28,7 +28,7 @@ void PersonajePrincipal::movimiento()
     float VoX = VELINI * cos(Theta), VoY = VELINI * sin(Theta);
 
 
-    X = VoX * tiempo, Y = H + VoY * tiempo - 0.5 * GRAVEDAD * pow(tiempo,2);
+    X += VoX * tiempo, Y = H + VoY * tiempo - 0.5 * GRAVEDAD * pow(tiempo,2);
 
     tiempo += 0.01;
 
@@ -50,5 +50,25 @@ void PersonajePrincipal::setDirX(int value)
 void PersonajePrincipal::setDirY(int value)
 {
     DirY = value;
+}
+
+void PersonajePrincipal::setX(float value)
+{
+    X = value;
+}
+
+void PersonajePrincipal::setY(float value)
+{
+    Y = value;
+}
+
+float PersonajePrincipal::getX() const
+{
+    return X;
+}
+
+float PersonajePrincipal::getY() const
+{
+    return Y;
 }
 
