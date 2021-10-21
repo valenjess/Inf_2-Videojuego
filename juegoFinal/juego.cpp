@@ -15,8 +15,14 @@ Juego::Juego(QWidget *parent)
     for ( int j = 0;j < 5 ; j++){
         scene->addRect(j*20,0,20,20);
     }
-
+    saltarin = new PersonajePrincipal();
     scene->addItem(saltarin);
+
+
+    QTimer *timer = new QTimer(this);
+    connect( timer, SIGNAL(timeout()),this, SLOT(Mov()));
+    timer->start(10);
+
 }
 
 Juego::~Juego()
@@ -24,3 +30,27 @@ Juego::~Juego()
     delete ui;
 }
 
+
+void Juego::Mov()
+{
+    saltarin->movimiento();
+
+
+}
+
+void Juego::keyPressEvent(QKeyEvent *e)
+{
+
+        switch (e->key()){
+        case Qt::Key_A:
+
+            break;
+
+        case Qt::Key_S:
+
+            break;
+
+        }
+
+    //ui->graphicsView->setSceneRect(PosX-100,PosY-100,700,700);
+}

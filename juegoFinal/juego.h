@@ -4,8 +4,11 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+
 #include <fstream>
 #include <iostream>
+#include <QKeyEvent>
+#include <QTimer>
 
 #include "personajeprincipal.h"
 
@@ -22,6 +25,9 @@ public:
     Juego(QWidget *parent = nullptr);
     ~Juego();
 
+public slots:
+    void Mov();
+
 private:
     Ui::Juego *ui;
     QGraphicsScene *scene;
@@ -29,5 +35,8 @@ private:
     array <QGraphicsRectItem,5> *suelo;
 
     PersonajePrincipal *saltarin;
+
+protected:
+    void keyPressEvent(QKeyEvent *e);
 };
 #endif // JUEGO_H
