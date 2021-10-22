@@ -3,6 +3,15 @@
 PersonajePrincipal::PersonajePrincipal()
 {
 
+    filas = 0;
+    columnas = 0;
+
+
+    pixmap = new QPixmap(":/Imagenes/adventurer-1.3-Sheet.png");
+
+    ancho = 50;
+    alto = 37;
+
 }
 QRectF PersonajePrincipal::boundingRect() const
 {
@@ -40,6 +49,8 @@ void PersonajePrincipal::movimiento()
     if(!scene()->collidingItems(this).isEmpty() and tiempo != 0.01){
         tiempo = 0;
     }
+
+
 }
 
 void PersonajePrincipal::setDirX(int value)

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
@@ -23,6 +24,7 @@ class Ui_Juego
 {
 public:
     QWidget *centralwidget;
+    QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -34,9 +36,13 @@ public:
         Juego->resize(800, 600);
         centralwidget = new QWidget(Juego);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(15, 11, 761, 531));
+
+        gridLayout->addWidget(graphicsView, 0, 0, 1, 1);
+
         Juego->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Juego);
         menubar->setObjectName(QString::fromUtf8("menubar"));

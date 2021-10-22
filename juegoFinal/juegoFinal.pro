@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     juego.cpp \
-    personajeprincipal.cpp
+    personajeprincipal.cpp \
+    sprites.cpp
 
 HEADERS += \
     juego.h \
-    personajeprincipal.h
+    personajeprincipal.h \
+    sprites.h
 
 FORMS += \
     juego.ui
@@ -24,3 +26,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    pictures.qrc

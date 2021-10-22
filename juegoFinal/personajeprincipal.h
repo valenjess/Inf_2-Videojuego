@@ -8,6 +8,10 @@
 #include <QPainter>
 #include <math.h>
 
+#include <QObject>
+#include <QTimer>
+#include <QPixmap>
+
 #include <QtDebug>
 
 
@@ -38,6 +42,20 @@ public:
     float getX() const;
 
     float getY() const;
+
+    QTimer *timer;
+    QPixmap *pixmap;
+
+    float filas, columnas;
+
+    float ancho;
+    float alto;
+
+
+signals:
+
+public slots:
+    void Actualizacion();
 
 private:
 
