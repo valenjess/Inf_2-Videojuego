@@ -13,14 +13,15 @@
 #include <QPixmap>
 
 #include <QtDebug>
+#include <QGraphicsPixmapItem>
 
 
 
 
-class PersonajePrincipal : public QGraphicsItem
+class PersonajePrincipal : public QGraphicsPixmapItem,QGraphicsScene
 {
 public:
-    PersonajePrincipal();
+    PersonajePrincipal(QGraphicsScene *_scene);
 
     QRectF boundingRect() const;
 
@@ -44,6 +45,7 @@ public:
     float getY() const;
 
     QTimer *timer;
+    float tiempo = 0;
     QPixmap *pixmap;
 
     float filas, columnas;
@@ -51,6 +53,10 @@ public:
     float ancho;
     float alto;
 
+
+    void setTiempo(float value);
+
+    float getTiempo() const;
 
 signals:
 
@@ -70,6 +76,7 @@ private:
 
     float X = 0;
     float Y = 0;
+    QGraphicsScene *scene;
 
 
 

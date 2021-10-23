@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Imagenes/adventurer-1.3-Sheet.png</file>
+    </qresource>
+</RCC>

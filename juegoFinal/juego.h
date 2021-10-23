@@ -31,6 +31,7 @@ public slots:
 private:
     Ui::Juego *ui;
     QGraphicsScene *scene;
+    vector <QGraphicsRectItem *> muro;
 
     array <QGraphicsRectItem,5> *suelo;
 

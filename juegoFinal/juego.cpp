@@ -13,9 +13,11 @@ Juego::Juego(QWidget *parent)
 
 
     for ( int j = 0;j < 5 ; j++){
-        scene->addRect(j*20,0,20,20);
+         muro.push_back(scene->addRect(j*20,0,20,20));
+         muro.push_back(scene->addRect(j*20,20,20,20));
+
     }
-    saltarin = new PersonajePrincipal();
+    saltarin = new PersonajePrincipal(scene);
     scene->addItem(saltarin);
 
 
@@ -34,6 +36,13 @@ Juego::~Juego()
 void Juego::Mov()
 {
     saltarin->movimiento();
+    for (auto mur:muro){
+        if(saltarin->collidesWithItem(mur)) {
+            saltarin->setTiempo(0);
+            qDebug()<<"hola";
+        }
+    }
+
 
 
 }

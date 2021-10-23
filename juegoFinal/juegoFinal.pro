@@ -11,13 +11,11 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     juego.cpp \
-    personajeprincipal.cpp \
-    sprites.cpp
+    personajeprincipal.cpp
 
 HEADERS += \
     juego.h \
-    personajeprincipal.h \
-    sprites.h
+    personajeprincipal.h
 
 FORMS += \
     juego.ui
