@@ -1,11 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "arania.h"
 
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include <QTimer>
 #include <QDebug>
+
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,12 +24,14 @@ public:
 
 public slots:
       void movimiento();
+      void Posiciones();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *escenario;
     QGraphicsEllipseItem *spider;
-    std::list<QGraphicsEllipseItem *> l;
+    vector<QGraphicsEllipseItem *> l;
     QTimer *timer;
+    list<Arania*> spiders;
 };
 #endif // MAINWINDOW_H
