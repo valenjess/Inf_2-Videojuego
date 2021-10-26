@@ -36,8 +36,15 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(30, 10, 761, 551));
-        graphicsView->setStyleSheet(QString::fromUtf8("images/pared1.jpg"));
+        graphicsView->setGeometry(QRect(-20, 30, 761, 551));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
+        graphicsView->setSizePolicy(sizePolicy);
+        graphicsView->setAutoFillBackground(true);
+        graphicsView->setStyleSheet(QString::fromUtf8("background-image: url(:/new/prefix1/images/pared1.jpg);\n"
+"background-color: rgb(170, 85, 0);"));
         mapa->setCentralWidget(centralwidget);
         menubar = new QMenuBar(mapa);
         menubar->setObjectName(QString::fromUtf8("menubar"));

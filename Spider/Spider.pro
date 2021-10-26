@@ -10,22 +10,15 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mapa.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    mapa.h
+    mainwindow.h
 
 FORMS += \
-    mapa.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    images/suelo.jpg
-
-RESOURCES += \
-    fondo.qrc \
-    images/pared1.qrc
