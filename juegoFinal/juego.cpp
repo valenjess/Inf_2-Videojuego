@@ -19,7 +19,7 @@ Juego::Juego(QWidget *parent)
     }
 
     muro.push_back(scene->addRect(40,-60,20,20));
-    saltarin = new PersonajePrincipal(scene);
+    saltarin = new PersonajePrincipal(scene,muro);
     scene->addItem(saltarin);
 
 
@@ -38,13 +38,6 @@ Juego::~Juego()
 void Juego::Mov()
 {
     saltarin->movimiento();
-    //for (auto mur:muro){
-    //    if(saltarin->collidesWithItem(mur)) {
-   //         saltarin->setTiempo(0);
-    //        qDebug()<<"hola";
-    //    }
-   // }
-
 
 
 }
