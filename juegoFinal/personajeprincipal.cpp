@@ -3,7 +3,7 @@
 PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene)
 {
 
-    filas = 0;
+    filas = 74;
     columnas = 0;
 
     scene = _scene;
@@ -11,7 +11,7 @@ PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene)
 
     pixmap = new QPixmap(":/Imagenes/adventurer-1.3-Sheet.png");
 
-    ancho = 50;
+    ancho = 32;
     alto = 37;
 
     //*pixmap=pixmap->scaled(10,10);
@@ -31,7 +31,7 @@ void PersonajePrincipal::paint(QPainter *painter, const QStyleOptionGraphicsItem
     //QRectF rectangulo(PosX*Escala, PosY*Escala, Radio*0.06, Radio*Escala);
     //painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,74,ancho,alto);
 
-    painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,74,ancho,alto);
+    painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,filas,ancho,alto);
 
     //painter->setBrush(Qt::blue);
     //painter->drawEllipse(boundingRect());
@@ -56,10 +56,9 @@ void PersonajePrincipal::movimiento()
     PosX = X, PosY = -Y;
 
     //and tiempo != 0.01
-    //if(!scene->collidingItems(this).isEmpty() ){
-     //   tiempo = 0;
-    //    qDebug()<<"hola";
-    //}
+    if(!scene->collidingItems(this).isEmpty() and tiempo != 0.01 ){
+       tiempo = 0;
+    }
 
 
     static int sprid = 0;
@@ -72,14 +71,6 @@ void PersonajePrincipal::movimiento()
         columnas += 50;
     }
     sprid++;
-
-
-    //setPixmap(*pixmap);
-    //this->update(-ancho/2,-(alto+10)/2,ancho,alto);
-    //this->update(-ancho/2,-alto/2,ancho,alto);
-
-    //static int cont = 0;
-    //setPos(X,cont++);
 
 
 }
@@ -117,6 +108,12 @@ float PersonajePrincipal::getY() const
 {
     return Y;
 }
+
+void PersonajePrincipal::setFilas(float value)
+{
+    filas = value;
+}
+
 
 float PersonajePrincipal::getTiempo() const
 {

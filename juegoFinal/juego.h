@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+#include <QGraphicsView>
 
 #include <fstream>
 #include <iostream>
@@ -25,6 +26,7 @@ public:
     Juego(QWidget *parent = nullptr);
     ~Juego();
 
+
 public slots:
     void Mov();
 
@@ -36,6 +38,7 @@ private:
     array <QGraphicsRectItem,5> *suelo;
 
     PersonajePrincipal *saltarin;
+
 
 protected:
     void keyPressEvent(QKeyEvent *e);

@@ -18,7 +18,7 @@
 
 
 
-class PersonajePrincipal : public QGraphicsPixmapItem,QGraphicsScene
+class PersonajePrincipal : public QGraphicsItem
 {
 public:
     PersonajePrincipal(QGraphicsScene *_scene);
@@ -44,7 +44,6 @@ public:
 
     float getY() const;
 
-    QTimer *timer;
     float tiempo = 0;
     QPixmap *pixmap;
 
@@ -54,9 +53,12 @@ public:
     float alto;
 
 
+
     void setTiempo(float value);
 
     float getTiempo() const;
+
+    void setFilas(float value);
 
 signals:
 

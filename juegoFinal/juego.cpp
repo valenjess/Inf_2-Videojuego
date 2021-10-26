@@ -13,10 +13,12 @@ Juego::Juego(QWidget *parent)
 
 
     for ( int j = 0;j < 5 ; j++){
-         muro.push_back(scene->addRect(j*20,0,20,20));
+         //muro.push_back(scene->addRect(j*20,0,20,20));
          muro.push_back(scene->addRect(j*20,20,20,20));
 
     }
+
+    muro.push_back(scene->addRect(40,-60,20,20));
     saltarin = new PersonajePrincipal(scene);
     scene->addItem(saltarin);
 
@@ -36,12 +38,12 @@ Juego::~Juego()
 void Juego::Mov()
 {
     saltarin->movimiento();
-    for (auto mur:muro){
-        if(saltarin->collidesWithItem(mur)) {
-            saltarin->setTiempo(0);
-            qDebug()<<"hola";
-        }
-    }
+    //for (auto mur:muro){
+    //    if(saltarin->collidesWithItem(mur)) {
+   //         saltarin->setTiempo(0);
+    //        qDebug()<<"hola";
+    //    }
+   // }
 
 
 
@@ -54,6 +56,7 @@ void Juego::keyPressEvent(QKeyEvent *e)
         case Qt::Key_A:
             PosX=saltarin->getX();
             saltarin->setX(PosX-2);
+            saltarin->setFilas(111);
 
 
             break;
@@ -61,6 +64,7 @@ void Juego::keyPressEvent(QKeyEvent *e)
         case Qt::Key_D:
             PosX=saltarin->getX();
             saltarin->setX(PosX+2);
+            saltarin->setFilas(74);
 
             break;
 
