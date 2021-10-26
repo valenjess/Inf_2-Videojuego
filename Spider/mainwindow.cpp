@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT (movimiento()));
-    timer->start(20);
+    timer->start(500);
 }
 
 MainWindow::~MainWindow()
@@ -30,18 +30,20 @@ MainWindow::~MainWindow()
 void MainWindow::movimiento()
 {
     static float degrees = 30.0f;
-
+    static float AuxDegrees = degrees;
     float radians = qDegreesToRadians(degrees);
 
     float LCuerda = 3;
 
-   if(degrees >= -30 || degrees <0){
+   if(AuxDegrees == -5 || degrees == -30){
         qDebug()<<"AQUI";
         degrees += 5;
     }
 
+
     else{
          degrees -= 5;
+
     }
 
     l.front()->setPos(LCuerda*qSin(radians),-LCuerda*qCos(radians));
