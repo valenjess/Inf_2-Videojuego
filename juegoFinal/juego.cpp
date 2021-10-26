@@ -18,7 +18,7 @@ Juego::Juego(QWidget *parent)
 
     }
 
-    muro.push_back(scene->addRect(40,-60,20,20));
+    muro.push_back(scene->addRect(40,-30,20,20));
     saltarin = new PersonajePrincipal(scene,muro);
     scene->addItem(saltarin);
 

@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <math.h>
+#include <iostream>
 
 #include <QObject>
 #include <QTimer>
@@ -17,11 +18,11 @@
 
 
 
-
+using namespace std;
 class PersonajePrincipal : public QGraphicsItem
 {
 public:
-    PersonajePrincipal(QGraphicsScene *_scene);
+    PersonajePrincipal(QGraphicsScene *_scene,vector <QGraphicsRectItem *> _muro);
 
     QRectF boundingRect() const;
 
@@ -52,6 +53,8 @@ public:
     float ancho;
     float alto;
 
+    QGraphicsRectItem *LadoDer,*LadoIzq,*LadoSup,*LadoInfer;
+
 
 
     void setTiempo(float value);
@@ -66,6 +69,8 @@ public slots:
     void Actualizacion();
 
 private:
+
+    vector <QGraphicsRectItem *> muro;
 
 
     int PosX = 0, PosY = -10;
