@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
+#include <QGraphicsEllipseItem>
+#include <QTimer>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +19,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+      void movimiento();
+
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *escenario;
+    QGraphicsEllipseItem *spider;
+    std::list<QGraphicsEllipseItem *> l;
+    QTimer *timer;
 };
 #endif // MAINWINDOW_H
