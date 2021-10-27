@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "arania.h"
+#include "earania.h"
 
 #include <QMainWindow>
 #include <QGraphicsScene>
@@ -32,6 +32,6 @@ private:
     QGraphicsEllipseItem *spider;
     vector<QGraphicsEllipseItem *> l;
     QTimer *timer;
-    list<Arania*> spiders;
+    list<EArania*> spiders;
 };
 #endif // MAINWINDOW_H

@@ -11,15 +11,28 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPen pen1(Qt::green, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
 
+
     l.push_back( escenario->addEllipse(0,0,30,30,pen1));
+
+    EArania *arania1;
+    arania1 = new EArania(90.0,30.0);
+    escenario->addItem(arania1);
+    spiders.push_back(arania1);
+
 
     ui->graphicsView->setScene(escenario);
     ui->graphicsView->showFullScreen();
 
-
+  /*
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT (movimiento()));
-    timer->start(500);
+    timer->start(5);
+    */
+
+    QTimer *timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT (Posiciones()));
+    timer->start(5);
+
 }
 
 MainWindow::~MainWindow()
@@ -29,26 +42,49 @@ MainWindow::~MainWindow()
 
 void MainWindow::movimiento()
 {
-    static float degrees = 30.0f;
-    static float AuxDegrees = degrees;
+    static float degrees = 90;
+    static int camb = 0;
     float radians = qDegreesToRadians(degrees);
+    float LCuerda = 50;
+    float PosX = 0;
+    float PosY = 0;
 
-    float LCuerda = 3;
-
-   if(AuxDegrees == -5 || degrees == -30){
-        qDebug()<<"AQUI";
-        degrees += 5;
-    }
-
-
-    else{
-         degrees -= 5;
+    if(degrees == -90){
+        camb = 1;
+        degrees += 1;
 
     }
 
-    l.front()->setPos(LCuerda*qSin(radians),-LCuerda*qCos(radians));
-   // qDebug()<<qSin(25);
+    else if(camb== 0){
+        degrees -= 1;
+    }
+
+    else if(degrees == 90){
+        camb = 0;
+        degrees -= 1;
+    }
+    else if(camb == 1){
+        degrees += 1;
+    }
+
+    PosX = LCuerda*qSin(radians);
+    PosY = -LCuerda*qCos(radians);
+
+    l.at(0)->setPos(PosX,-PosY);
+
     qDebug()<<LCuerda*qSin(radians);
     qDebug()<<-LCuerda*qCos(radians);
 }
 
+void MainWindow::Posiciones()
+{
+
+    for (auto elempider:spiders ) {
+
+        float X = elempider->getPosX();
+        float Y = elempider->getPosY();
+
+        elempider->setPos(X,-Y);
+
+    }
+}
