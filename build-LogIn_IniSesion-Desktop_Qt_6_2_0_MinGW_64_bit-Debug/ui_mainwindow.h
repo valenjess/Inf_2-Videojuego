@@ -34,22 +34,23 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->setWindowModality(Qt::NonModal);
+        MainWindow->resize(262, 243);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(130, 20, 101, 21));
+        label->setGeometry(QRect(90, 30, 101, 21));
         OneGamerButton = new QPushButton(centralwidget);
         OneGamerButton->setObjectName(QString::fromUtf8("OneGamerButton"));
-        OneGamerButton->setGeometry(QRect(130, 60, 91, 31));
+        OneGamerButton->setGeometry(QRect(80, 70, 91, 31));
         TwoGamerButton = new QPushButton(centralwidget);
         TwoGamerButton->setObjectName(QString::fromUtf8("TwoGamerButton"));
-        TwoGamerButton->setGeometry(QRect(130, 110, 91, 31));
+        TwoGamerButton->setGeometry(QRect(80, 120, 91, 31));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 262, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -62,7 +63,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "mainwindow", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Modo de Juego", nullptr));
         OneGamerButton->setText(QCoreApplication::translate("MainWindow", "\303\232nico Jugador", nullptr));
         TwoGamerButton->setText(QCoreApplication::translate("MainWindow", "Dos Jugadores", nullptr));

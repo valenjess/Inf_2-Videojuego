@@ -2,23 +2,26 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>262</width>
+    <height>243</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>mainwindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>20</y>
+      <x>90</x>
+      <y>30</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -30,8 +33,8 @@
    <widget class="QPushButton" name="OneGamerButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>60</y>
+      <x>80</x>
+      <y>70</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -43,8 +46,8 @@
    <widget class="QPushButton" name="TwoGamerButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>110</y>
+      <x>80</x>
+      <y>120</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -59,7 +62,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>262</width>
      <height>21</height>
     </rect>
    </property>

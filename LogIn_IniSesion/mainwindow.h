@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 #include "onegamer.h"
 #include "multigamer.h"
 
@@ -24,5 +25,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *scene;
 };
 #endif // MAINWINDOW_H

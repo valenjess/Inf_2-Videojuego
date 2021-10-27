@@ -17,13 +17,16 @@ MainWindow::~MainWindow()
 void MainWindow::on_OneGamerButton_clicked()
 {
     OneGamer *OnlyGam = new OneGamer(0);
-    OneGamer.show();
+    OnlyGam->show();
+    close();
 
 }
 
 
 void MainWindow::on_TwoGamerButton_clicked()
 {
-
+   MultiGamer *MultiGam = new MultiGamer;
+   MultiGam->show();
+   close();
 }
 
