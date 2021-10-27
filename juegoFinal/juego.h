@@ -12,6 +12,7 @@
 #include <QTimer>
 
 #include "personajeprincipal.h"
+#include "enemigoprincipal.h"
 
 using namespace std;
 QT_BEGIN_NAMESPACE
@@ -33,11 +34,13 @@ public slots:
 private:
     Ui::Juego *ui;
     QGraphicsScene *scene;
-    vector <QGraphicsRectItem *> muro;
+    vector <EnemigoPrincipal *> muro;
 
     array <QGraphicsRectItem,5> *suelo;
 
     PersonajePrincipal *saltarin;
+
+    EnemigoPrincipal *Enemigo;
 
 
 protected:
