@@ -13,14 +13,20 @@ Juego::Juego(QWidget *parent)
 
 
     for ( int j = 0;j < 5 ; j++){
+        Enemigo = new EnemigoPrincipal(j*20,0,3);
          //muro.push_back(scene->addRect(j*20,0,20,20));
-         muro.push_back(scene->addRect(j*20,20,20,20));
+       scene->addItem(Enemigo);
+        muro.push_back(Enemigo);
 
     }
+    //Enemigo = new EnemigoPrincipal();
+     //muro.push_back(scene->addRect(j*20,0,20,20));
+    //scene->addItem(Enemigo);
+    //muro.push_back(Enemigo);
 
-    muro.push_back(scene->addRect(40,-30,20,20));
-    saltarin = new PersonajePrincipal(scene,muro);
-    scene->addItem(saltarin);
+    //muro.push_back(scene->addRect(40,-30,20,20));
+    //saltarin = new PersonajePrincipal(scene,muro);
+    //scene->addItem(saltarin);
 
 
     QTimer *timer = new QTimer(this);
@@ -37,7 +43,10 @@ Juego::~Juego()
 
 void Juego::Mov()
 {
-    saltarin->movimiento();
+   // saltarin->movimiento();
+    for (auto EnePrincipal: muro){
+        EnePrincipal->animacion();
+    }
 
 
 }
