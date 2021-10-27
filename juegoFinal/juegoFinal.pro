@@ -12,15 +12,18 @@ SOURCES += \
     enemigoprincipal.cpp \
     main.cpp \
     juego.cpp \
+    modojuego.cpp \
     personajeprincipal.cpp
 
 HEADERS += \
     enemigoprincipal.h \
     juego.h \
+    modojuego.h \
     personajeprincipal.h
 
 FORMS += \
-    juego.ui
+    juego.ui \
+    modojuego.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -29,3 +32,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     pictures.qrc
+
+DISTFILES +=

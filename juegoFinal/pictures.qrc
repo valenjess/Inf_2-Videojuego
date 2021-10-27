@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>Imagenes/adventurer-1.3-Sheet.png</file>
         <file>Imagenes/fueguito.png</file>
+        <file>Imagenes/MuroRojo.jpg</file>
+        <file>Imagenes/MuroAzul.jpg</file>
+        <file>Imagenes/MuroNormal.jpg</file>
     </qresource>
 </RCC>

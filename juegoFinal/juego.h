@@ -26,6 +26,9 @@ class Juego : public QMainWindow
 public:
     Juego(QWidget *parent = nullptr);
     ~Juego();
+    //mapa
+    void lecturaMapa();
+    //
 
 
 public slots:
@@ -41,6 +44,19 @@ private:
     PersonajePrincipal *saltarin;
 
     EnemigoPrincipal *Enemigo;
+
+//mapa
+    array <QGraphicsScene *,3> niveles;
+    array <string,3> RutaLevels;
+
+    array <vector<QGraphicsRectItem*>,3> norm;
+    array <vector<QGraphicsRectItem*>,3> azul;
+    array <vector<QGraphicsRectItem*>,3> roj;
+    array <vector<QGraphicsRectItem*>,3> pi;
+
+    vector<QPen>pens;
+    QBrush brush1;
+    int Plataformas[24][30];
 
 
 protected:

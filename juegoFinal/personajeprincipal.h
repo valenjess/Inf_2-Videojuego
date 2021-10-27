@@ -22,7 +22,7 @@ using namespace std;
 class PersonajePrincipal : public QGraphicsItem
 {
 public:
-    PersonajePrincipal(QGraphicsScene *_scene,vector <QGraphicsRectItem *> _muro);
+    PersonajePrincipal(QGraphicsScene *_scene,vector <QGraphicsRectItem *> _muro,vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo);
 
     QRectF boundingRect() const;
 
@@ -71,6 +71,9 @@ public slots:
 private:
 
     vector <QGraphicsRectItem *> muro;
+    vector <QGraphicsRectItem *> rojo;
+    vector <QGraphicsRectItem *> azul;
+    vector <QGraphicsRectItem *> suelo;
 
 
     int PosX = 0, PosY = -10;

@@ -1,12 +1,15 @@
 #include "personajeprincipal.h"
 
-PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro)
+PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo)
 {
 
     filas = 74;
     columnas = 0;
 
     muro = _muro;
+    rojo=_rojo;
+    azul=_azul;
+    suelo=_suelo;
 
     scene = _scene;
 
