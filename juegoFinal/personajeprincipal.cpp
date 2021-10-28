@@ -3,7 +3,7 @@
 PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo, vector <QGraphicsRectItem *> _azul, vector <QGraphicsRectItem *> _suelo, int _PoX, int _PosY)
 {
 
-    filas = 74;
+    filas = 200;
     columnas = 0;
 
     muro = _muro;
@@ -17,10 +17,10 @@ PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsR
     PosY=_PosY;
 
 
-    pixmap = new QPixmap(":/Imagenes/adventurer-1.3-Sheet.png");
+    pixmap = new QPixmap(":/Imagenes/PerPrincipal.png");
 
-    ancho = 32;
-    alto = 37;
+    ancho = 100;
+    alto = 77;
 
     //*pixmap=pixmap->scaled(10,10);
 
@@ -40,7 +40,7 @@ void PersonajePrincipal::paint(QPainter *painter, const QStyleOptionGraphicsItem
     //painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,74,ancho,alto);
 
     painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,filas,ancho,alto);
-    //setPos(PosX,PosY);
+    setPos(PosX,PosY);
 }
 
 
@@ -63,7 +63,6 @@ void PersonajePrincipal::movimiento()
     //and tiempo != 0.01
     if(!scene->collidingItems(this).isEmpty())
         {
-
 
 
            for(auto bloque:muro){
@@ -186,10 +185,9 @@ void PersonajePrincipal::movimiento()
         verificacion=0;
     }
 
+    //setPixmap(*pixmap);
     setPos(X,-Y);
-    PosX = X, PosY = -Y;
-
-
+    PosX = X , PosY = -Y;
 
 
     static int sprid = 0;

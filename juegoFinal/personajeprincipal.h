@@ -19,7 +19,7 @@
 
 
 using namespace std;
-class PersonajePrincipal : public QGraphicsItem
+class PersonajePrincipal : public QGraphicsItem //QGraphicsPixmapItem //
 {
 public:
     PersonajePrincipal(QGraphicsScene *_scene,vector <QGraphicsRectItem *> _muro,vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo,int _PoX,int _PosY);
@@ -76,10 +76,10 @@ private:
     vector <QGraphicsRectItem *> suelo;
 
 
-    int PosX = 0, PosY = -10;
+    int PosX = 0, PosY = -55;
     int Radio = 10;
 
-    int DirX = 0, DirY = 10;
+    int DirX = 0, DirY = 100;
 
     float Theta =0;
     float H =500;
@@ -87,7 +87,7 @@ private:
     float X = 0;
     float Y = 0;
 
-    int Estado ;
+    int Estado = 0 ;
 
     QGraphicsScene *scene;
 
