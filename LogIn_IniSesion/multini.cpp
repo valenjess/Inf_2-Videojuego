@@ -94,8 +94,9 @@ void MultIni::on_IniciarButton_clicked()
     for (int i = 0;i<Data.size() ;i++ ) {
         if(Data[i][0] == UGamer1 ){
             if(Data[i][3] == Upass){
-                qDebug()<<"Bienvenido";//LLAMAR JUEGO
                 index = i;
+
+
 
             }
             else{

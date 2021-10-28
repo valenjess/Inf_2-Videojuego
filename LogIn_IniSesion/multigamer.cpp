@@ -15,6 +15,7 @@ MultiGamer::~MultiGamer()
 
 void MultiGamer::on_RegresarButton_clicked()
 {
+
     MainWindow *Multigamer = new MainWindow(0);
     Multigamer->show();
     close();

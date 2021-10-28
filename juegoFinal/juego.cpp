@@ -1,21 +1,37 @@
 #include "juego.h"
 #include "ui_juego.h"
 
-Juego::Juego(QWidget *parent)
+Juego::Juego(int level, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Juego)
 {
     ui->setupUi(this);
 
+    Nivel=level;
 
     RutaLevels ={"../juegoFinal/BD/Nivel1.txt",
                  "../juegoFinal/BD/Nivel2.txt",
                  "../juegoFinal/BD/Nivel3.txt"};
+
+
+    //Definicion escena de niveles
     for(int i =0; i< 3;i++){
         QGraphicsScene *nivel;
         nivel=new QGraphicsScene();
         niveles[i]=nivel;
     }
+
+    // poner los elementos en la escena
+    lecturaMapa();
+
+    //colocar la escena
+    ui->graphicsView->setScene(niveles[Nivel-1]);
+    ui->graphicsView->show();
+
+
+
+
+
 
 
 
@@ -26,13 +42,6 @@ Juego::Juego(QWidget *parent)
     //ui->graphicsView->setScene(scene);
 
 
-    //for ( int j = 0;j < 5 ; j++){
-    //    Enemigo = new EnemigoPrincipal(j*20,0,3);
-         //muro.push_back(scene->addRect(j*20,0,20,20));
-     //  scene->addItem(Enemigo);
-     //   muro.push_back(Enemigo);
-
-    //}
     //Enemigo = new EnemigoPrincipal();
      //muro.push_back(scene->addRect(j*20,0,20,20));
     //scene->addItem(Enemigo);
@@ -84,9 +93,9 @@ void Juego::lecturaMapa()
     file.close();
 
     QImage img1("../mapa/Images/suelo.jpg");//piso
-    QImage img2("../mapa/Images/bloques.jpg");//noramles
+    QImage img2(":/Imagenes/MuroNormal.jpg");//noramles
     QImage img3(":/Imagenes/MuroRojo.jpg");//fuego
-    QImage img4("../mapa/Images/bloques.jpg");//agua
+    QImage img4(":/Imagenes/MuroAzul.jpg");//agua
 
     pens.push_back(QPen(Qt::darkYellow, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     pens.push_back(QPen(Qt::blue, 4, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
@@ -94,9 +103,10 @@ void Juego::lecturaMapa()
     pens.push_back( QPen (Qt::black, 0.1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
 
-    brush1 =  QBrush(img1);
-
-    QBrush brush2(img2);
+    QBrush brush_P(img1);//piso
+    QBrush brush_N(img2);
+    QBrush brush_F(img3);
+    QBrush brush_A(img4);
 
     vector <QGraphicsRectItem*> normal;
     vector <QGraphicsRectItem*> agua;
@@ -105,29 +115,28 @@ void Juego::lecturaMapa()
 
 
 
-     for (int i = 0;i<24 ;i++ ) {
-         for (int j = 0; j<30 ; j++ ) {
-             if(Plataformas[i][j]==49){ //normales
-                 normal.push_back(niveles[i]->addRect(j*80,i*50,80,50,pens.at(2),brush2) );
-             }
-             else if (Plataformas[i][j]==50) {//agua
-                 agua.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(1))));
-             }
-             else if (Plataformas[i][j]==51){//fuego
-                 fuego.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(0))));
-             }
-             else if (Plataformas[i][j]==52){//piso
-                 piso.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(3),brush1)));
-             }
-             else if (Plataformas[i][j]==53){//PersonajePrincipal
+    for (int l = 0;l<24 ;l++ ) {
+        for (int j = 0; j<30 ; j++ ) {
+            if(Plataformas[l][j]==49){ //normales
+                normal.push_back(niveles[i]->addRect(j*80,-(l*50),80,50,pens.at(2),brush_N) );
+            }
+            else if (Plataformas[l][j]==50) {//agua
+                agua.push_back((niveles[i]->addRect(j*80,-(l*50),80,50,pens.at(1),brush_A)));
+            }
+            else if (Plataformas[l][j]==51){//fuego
+                fuego.push_back((niveles[i]->addRect(j*80,-(l*50),80,50,pens.at(0),brush_F)));
+            }
+            else if (Plataformas[l][j]==52){//piso
+                piso.push_back((niveles[i]->addRect(j*80,-(l*50),80,50,pens.at(3),brush_P)));
+            }
+            else if (Plataformas[l][j]==53){//PersonajePrincipal
 
-
-                 //muro.push_back(scene->addRect(40,-30,20,20));
-                 saltarin = new PersonajePrincipal(niveles[i],normal,fuego, agua ,piso);
-                 scene->addItem(saltarin);
-             }
-         }
-     }
+                //muro.push_back(scene->addRect(40,-30,20,20));
+                saltarin = new PersonajePrincipal(niveles[i],normal,fuego, agua ,piso,j,l);
+                niveles[i]->addItem(saltarin);
+            }
+        }
+    }
 
      norm[i]=normal;
      azul[i]=agua;
@@ -145,6 +154,7 @@ void Juego::lecturaMapa()
 void Juego::Mov()
 {
    saltarin->movimiento();
+
     //for (auto EnePrincipal: muro){
     //    EnePrincipal->animacion();
     //}
@@ -152,8 +162,28 @@ void Juego::Mov()
 
 }
 
+void Juego::setNivel(int value)
+{
+    Nivel = value;
+}
+
+
+
+void Juego::setDataDos(const vector<array<QString, 10> > &value)
+{
+    DataDos = value;
+}
+
+void Juego::setDataUno(const vector<array<QString, 6> > &value)
+{
+    DataUno = value;
+}
+
+
+
 void Juego::keyPressEvent(QKeyEvent *e)
 {
+
         int PosX = 0;
         switch (e->key()){
         case Qt::Key_A:
@@ -175,3 +205,4 @@ void Juego::keyPressEvent(QKeyEvent *e)
 
     //ui->graphicsView->setSceneRect(PosX-100,PosY-100,700,700);
 }
+

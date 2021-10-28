@@ -24,15 +24,26 @@ class Juego : public QMainWindow
     Q_OBJECT
 
 public:
-    Juego(QWidget *parent = nullptr);
+    Juego(int level,QWidget *parent = nullptr);
     ~Juego();
     //mapa
     void lecturaMapa();
     //
 
 
+
+
+    void setDataUno(const vector<array<QString, 6> > &value);
+
+    void setDataDos(const vector<array<QString, 10> > &value);
+
+    void setNivel(int value);
+
 public slots:
     void Mov();
+
+signals:
+    void endGame();
 
 private:
     Ui::Juego *ui;
@@ -56,7 +67,15 @@ private:
 
     vector<QPen>pens;
     QBrush brush1;
+
     int Plataformas[24][30];
+
+//Nivel actual
+    int Nivel ;
+
+
+    vector<array<QString,6>> DataUno;
+    vector<array<QString,10>> DataDos;
 
 
 protected:

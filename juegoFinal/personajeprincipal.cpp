@@ -1,6 +1,6 @@
 #include "personajeprincipal.h"
 
-PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo)
+PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo, vector <QGraphicsRectItem *> _azul, vector <QGraphicsRectItem *> _suelo, int _PoX, int _PosY)
 {
 
     filas = 74;
@@ -12,6 +12,9 @@ PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsR
     suelo=_suelo;
 
     scene = _scene;
+
+    PosX=_PoX;
+    PosY=_PosY;
 
 
     pixmap = new QPixmap(":/Imagenes/adventurer-1.3-Sheet.png");
@@ -37,9 +40,6 @@ void PersonajePrincipal::paint(QPainter *painter, const QStyleOptionGraphicsItem
     //painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,74,ancho,alto);
 
     painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,filas,ancho,alto);
-
-    //painter->setBrush(Qt::blue);
-    //painter->drawEllipse(boundingRect());
     //setPos(PosX,PosY);
 }
 
@@ -62,43 +62,16 @@ void PersonajePrincipal::movimiento()
 
     //and tiempo != 0.01
     if(!scene->collidingItems(this).isEmpty())
-    {
+        {
 
 
 
-       for(auto bloque:muro){
-           LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
-           LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
-           LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
-           LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+           for(auto bloque:muro){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
 
-           if(LadoDer->collidesWithItem(bloque)){
-               X-=3;
-           }
-           else if(LadoIzq->collidesWithItem(bloque)){
-               X+=3;
-           }
-           else if(LadoSup->collidesWithItem(bloque)){
-               base=Y-1;
-               verificacion=1;
-
-           }
-           else if(LadoInfer->collidesWithItem(bloque)){
-               tiempo = 0;
-               H=Y+1;
-           }
-           delete LadoDer;
-           delete LadoIzq;
-           delete LadoSup;
-           delete LadoInfer;
-       }
-       for( auto bloque:rojo){
-           LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
-           LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
-           LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
-           LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
-
-           if(Estado == 1){
                if(LadoDer->collidesWithItem(bloque)){
                    X-=3;
                }
@@ -114,19 +87,74 @@ void PersonajePrincipal::movimiento()
                    tiempo = 0;
                    H=Y+1;
                }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
            }
-           delete LadoDer;
-           delete LadoIzq;
-           delete LadoSup;
-           delete LadoInfer;
+           for( auto bloque:rojo){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
 
-       }
-       for( auto bloque:azul){
-           LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
-           LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
-           LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
-           LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
-           if(Estado == 3){
+               if(Estado == 1){
+                   if(LadoDer->collidesWithItem(bloque)){
+                       X-=3;
+                   }
+                   else if(LadoIzq->collidesWithItem(bloque)){
+                       X+=3;
+                   }
+                   else if(LadoSup->collidesWithItem(bloque)){
+                       base=Y-1;
+                       verificacion=1;
+
+                   }
+                   else if(LadoInfer->collidesWithItem(bloque)){
+                       tiempo = 0;
+                       H=Y+1;
+                   }
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
+
+           }
+           for( auto bloque:azul){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+               if(Estado == 3){
+                   if(LadoDer->collidesWithItem(bloque)){
+                       X-=3;
+                   }
+                   else if(LadoIzq->collidesWithItem(bloque)){
+                       X+=3;
+                   }
+                   else if(LadoSup->collidesWithItem(bloque)){
+                       base=Y-1;
+                       verificacion=1;
+
+                   }
+                   else if(LadoInfer->collidesWithItem(bloque)){
+                       tiempo = 0;
+                       H=Y+1;
+                   }
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
+
+           }
+           for( auto bloque:suelo){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+
                if(LadoDer->collidesWithItem(bloque)){
                    X-=3;
                }
@@ -141,49 +169,14 @@ void PersonajePrincipal::movimiento()
                else if(LadoInfer->collidesWithItem(bloque)){
                    tiempo = 0;
                    H=Y+1;
+
                }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
+
            }
-           delete LadoDer;
-           delete LadoIzq;
-           delete LadoSup;
-           delete LadoInfer;
-
-       }
-       for( auto bloque:suelo){
-           LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
-           LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
-           LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
-           LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
-           if(Estado == 4){
-               if(LadoDer->collidesWithItem(bloque)){
-                   X-=3;
-               }
-               else if(LadoIzq->collidesWithItem(bloque)){
-                   X+=3;
-               }
-               else if(LadoSup->collidesWithItem(bloque)){
-                   base=Y-1;
-                   verificacion=1;
-
-               }
-               else if(LadoInfer->collidesWithItem(bloque)){
-                   tiempo = 0;
-                   H=Y+1;
-               }
-           }
-           delete LadoDer;
-           delete LadoIzq;
-           delete LadoSup;
-           delete LadoInfer;
-
-       }
-
-
-
-
-
-
-
     }
     //qDebug()<<Y<<" "<<base;
     if( (Y>base) and verificacion==1){
@@ -195,6 +188,8 @@ void PersonajePrincipal::movimiento()
 
     setPos(X,-Y);
     PosX = X, PosY = -Y;
+
+
 
 
     static int sprid = 0;
@@ -249,5 +244,3 @@ void PersonajePrincipal::setFilas(float value)
 {
     filas = value;
 }
-
-
