@@ -24,7 +24,7 @@ class Juego : public QMainWindow
     Q_OBJECT
 
 public:
-    Juego(QWidget *parent = nullptr);
+    Juego(int level,QWidget *parent = nullptr);
     ~Juego();
     //mapa
     void lecturaMapa();
@@ -32,7 +32,12 @@ public:
 
 
 
-    void setNivel(int newNivel);
+
+    void setDataUno(const vector<array<QString, 6> > &value);
+
+    void setDataDos(const vector<array<QString, 10> > &value);
+
+    void setNivel(int value);
 
 public slots:
     void Mov();

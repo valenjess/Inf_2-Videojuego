@@ -37,6 +37,8 @@ private:
     QString ArchivoData = "../juegoFinal/BD/DataUnJugador.txt";
     vector<array<QString,6>> Data;
     int index = -1;
+
+    Juego *PantJuego;
 };
 
 #endif // UNINI_H

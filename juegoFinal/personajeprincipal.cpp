@@ -1,6 +1,6 @@
 #include "personajeprincipal.h"
 
-PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo)
+PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo, vector <QGraphicsRectItem *> _azul, vector <QGraphicsRectItem *> _suelo, int _PoX, int _PosY)
 {
 
     filas = 74;
@@ -12,6 +12,9 @@ PersonajePrincipal::PersonajePrincipal(QGraphicsScene *_scene, vector<QGraphicsR
     suelo=_suelo;
 
     scene = _scene;
+
+    PosX=_PoX;
+    PosY=_PosY;
 
 
     pixmap = new QPixmap(":/Imagenes/adventurer-1.3-Sheet.png");
@@ -37,9 +40,6 @@ void PersonajePrincipal::paint(QPainter *painter, const QStyleOptionGraphicsItem
     //painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,74,ancho,alto);
 
     painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,filas,ancho,alto);
-
-    //painter->setBrush(Qt::blue);
-    //painter->drawEllipse(boundingRect());
     //setPos(PosX,PosY);
 }
 
@@ -190,6 +190,8 @@ void PersonajePrincipal::movimiento()
     PosX = X, PosY = -Y;
 
 
+
+
     static int sprid = 0;
     if (columnas >= 400 ){
         columnas = 0;
@@ -242,5 +244,3 @@ void PersonajePrincipal::setFilas(float value)
 {
     filas = value;
 }
-
-

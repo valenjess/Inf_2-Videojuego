@@ -95,10 +95,16 @@ void UnIni::on_IniciarButton_clicked()
             if(Data[i][0] == UGamer){
                 if(Data[i][1] == Upass){
                     //qDebug()<<"Bienvenido";
-                    //qDebug()<<Data[i][5];
+                    qDebug()<<Data[i][5];
                     index = i;
+                    int level=Data[i][5].toInt();
 
-                    Juego *PantJuego = new Juego(0);
+                    PantJuego = new Juego(level,0);
+
+                    qDebug()<<level;
+                    //PantJuego->setNivel(level);
+                    //PantJuego->setDataUno(Data);
+
                     PantJuego->show();
                     close();
                 }
