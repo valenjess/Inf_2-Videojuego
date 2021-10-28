@@ -9,21 +9,42 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    dosini.cpp \
+    dosreg.cpp \
     enemigoprincipal.cpp \
+    jugarosalir.cpp \
     main.cpp \
     juego.cpp \
     modojuego.cpp \
-    personajeprincipal.cpp
+    muljugador.cpp \
+    personajeprincipal.cpp \
+    unini.cpp \
+    unjugador.cpp \
+    unreg.cpp
 
 HEADERS += \
+    dosini.h \
+    dosreg.h \
     enemigoprincipal.h \
     juego.h \
+    jugarosalir.h \
     modojuego.h \
-    personajeprincipal.h
+    muljugador.h \
+    personajeprincipal.h \
+    unini.h \
+    unjugador.h \
+    unreg.h
 
 FORMS += \
+    dosini.ui \
+    dosreg.ui \
     juego.ui \
-    modojuego.ui
+    jugarosalir.ui \
+    modojuego.ui \
+    muljugador.ui \
+    unini.ui \
+    unjugador.ui \
+    unreg.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

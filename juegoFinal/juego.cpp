@@ -11,6 +11,7 @@ Juego::Juego(QWidget *parent)
     RutaLevels ={"../juegoFinal/BD/Nivel1.txt",
                  "../juegoFinal/BD/Nivel2.txt",
                  "../juegoFinal/BD/Nivel3.txt"};
+
     for(int i =0; i< 3;i++){
         QGraphicsScene *nivel;
         nivel=new QGraphicsScene();
@@ -152,6 +153,12 @@ void Juego::Mov()
 
 }
 
+void Juego::setNivel(int newNivel)
+{
+    Nivel = newNivel;
+}
+
+
 void Juego::keyPressEvent(QKeyEvent *e)
 {
         int PosX = 0;
@@ -175,3 +182,4 @@ void Juego::keyPressEvent(QKeyEvent *e)
 
     //ui->graphicsView->setSceneRect(PosX-100,PosY-100,700,700);
 }
+

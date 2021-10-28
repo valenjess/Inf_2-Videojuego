@@ -10,6 +10,7 @@ OneGamer::OneGamer(QWidget *parent) :
     ui->setupUi(this);
 }
 
+
 OneGamer::~OneGamer()
 {
     delete ui;
@@ -19,12 +20,14 @@ void OneGamer::on_ISesionButton_clicked()
 {
     OneIni *IniSesion = new OneIni(0);
     IniSesion->show();
-    close();
+   // close();
+   // this->setVisible(true);
 }
 
 
 void OneGamer::on_RegistrarButton_clicked()
 {
+
     OneRegis *Regis = new OneRegis(0);
     Regis->show();
     close();

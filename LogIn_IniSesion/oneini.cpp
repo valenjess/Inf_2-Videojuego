@@ -86,6 +86,7 @@ void OneIni::on_Iniciar_clicked()
     for (int i = 0;i<Data.size() ;i++ ) {
         if(Data[i][0] == UGamer){
             if(Data[i][1] == Upass){
+                //LLAMAR NIVEL DEL JUEGO
                 qDebug()<<"Bienvenido";
                 index = i;
             }

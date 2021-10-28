@@ -62,39 +62,121 @@ void PersonajePrincipal::movimiento()
 
     //and tiempo != 0.01
     if(!scene->collidingItems(this).isEmpty())
-    {
-       LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
-       LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
-       LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
-       LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+        {
 
 
-       for(auto bloque:muro){
-           if(LadoDer->collidesWithItem(bloque)){
-               X-=3;
+
+           for(auto bloque:muro){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+
+               if(LadoDer->collidesWithItem(bloque)){
+                   X-=3;
+               }
+               else if(LadoIzq->collidesWithItem(bloque)){
+                   X+=3;
+               }
+               else if(LadoSup->collidesWithItem(bloque)){
+                   base=Y-1;
+                   verificacion=1;
+
+               }
+               else if(LadoInfer->collidesWithItem(bloque)){
+                   tiempo = 0;
+                   H=Y+1;
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
            }
-           else if(LadoIzq->collidesWithItem(bloque)){
-               X+=3;
-           }
-           else if(LadoSup->collidesWithItem(bloque)){
-               base=Y-1;
-               verificacion=1;
+           for( auto bloque:rojo){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+
+               if(Estado == 1){
+                   if(LadoDer->collidesWithItem(bloque)){
+                       X-=3;
+                   }
+                   else if(LadoIzq->collidesWithItem(bloque)){
+                       X+=3;
+                   }
+                   else if(LadoSup->collidesWithItem(bloque)){
+                       base=Y-1;
+                       verificacion=1;
+
+                   }
+                   else if(LadoInfer->collidesWithItem(bloque)){
+                       tiempo = 0;
+                       H=Y+1;
+                   }
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
 
            }
-           else if(LadoInfer->collidesWithItem(bloque)){
-               tiempo = 0;
-               H=Y+1;
+           for( auto bloque:azul){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
+               if(Estado == 3){
+                   if(LadoDer->collidesWithItem(bloque)){
+                       X-=3;
+                   }
+                   else if(LadoIzq->collidesWithItem(bloque)){
+                       X+=3;
+                   }
+                   else if(LadoSup->collidesWithItem(bloque)){
+                       base=Y-1;
+                       verificacion=1;
+
+                   }
+                   else if(LadoInfer->collidesWithItem(bloque)){
+                       tiempo = 0;
+                       H=Y+1;
+                   }
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
+
            }
-       }
-       delete LadoDer;
-       delete LadoIzq;
-       delete LadoSup;
-       delete LadoInfer;
+           for( auto bloque:suelo){
+               LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),10,30);//derecha
+               LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),10,30);//izquierda
+               LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),32,10);//arriba
+               LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),32,2);//abajo
 
+               if(LadoDer->collidesWithItem(bloque)){
+                   X-=3;
+               }
+               else if(LadoIzq->collidesWithItem(bloque)){
+                   X+=3;
+               }
+               else if(LadoSup->collidesWithItem(bloque)){
+                   base=Y-1;
+                   verificacion=1;
 
+               }
+               else if(LadoInfer->collidesWithItem(bloque)){
+                   tiempo = 0;
+                   H=Y+1;
 
+               }
+               delete LadoDer;
+               delete LadoIzq;
+               delete LadoSup;
+               delete LadoInfer;
 
-
+           }
     }
     //qDebug()<<Y<<" "<<base;
     if( (Y>base) and verificacion==1){
