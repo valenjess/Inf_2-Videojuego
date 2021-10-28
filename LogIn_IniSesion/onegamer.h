@@ -2,6 +2,7 @@
 #define ONEGAMER_H
 
 #include <QWidget>
+#include "oneini.h"
 
 namespace Ui {
 class OneGamer;
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::OneGamer *ui;
+
 };
 
 #endif // ONEGAMER_H

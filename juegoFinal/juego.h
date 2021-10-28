@@ -31,8 +31,14 @@ public:
     //
 
 
+
+    void setNivel(int newNivel);
+
 public slots:
     void Mov();
+
+signals:
+    void endGame();
 
 private:
     Ui::Juego *ui;
@@ -56,7 +62,15 @@ private:
 
     vector<QPen>pens;
     QBrush brush1;
+
     int Plataformas[24][30];
+
+//Nivel actual
+    int Nivel ;
+
+
+    vector<array<QString,6>> DataUno;
+    vector<array<QString,10>> DataDos;
 
 
 protected:

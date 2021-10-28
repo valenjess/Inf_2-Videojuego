@@ -1,6 +1,8 @@
 #ifndef ONEINI_H
 #define ONEINI_H
 
+#include <onegamer.h>
+
 #include <QWidget>
 #include <QDebug>
 #include <QFile>

@@ -86,6 +86,9 @@ private:
 
     float X = 0;
     float Y = 0;
+
+    int Estado ;
+
     QGraphicsScene *scene;
 
 
