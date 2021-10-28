@@ -95,9 +95,10 @@ void Juego::lecturaMapa()
     pens.push_back( QPen (Qt::black, 0.1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
 
-    brush1 =  QBrush(img1);
-
-    QBrush brush2(img2);
+    QBrush brush_P(img1);//piso
+    QBrush brush_N(img2);
+    QBrush brush_F(img3);
+    QBrush brush_A(img4);
 
     vector <QGraphicsRectItem*> normal;
     vector <QGraphicsRectItem*> agua;
@@ -109,16 +110,16 @@ void Juego::lecturaMapa()
      for (int i = 0;i<24 ;i++ ) {
          for (int j = 0; j<30 ; j++ ) {
              if(Plataformas[i][j]==49){ //normales
-                 normal.push_back(niveles[i]->addRect(j*80,i*50,80,50,pens.at(2),brush2) );
+                 normal.push_back(niveles[i]->addRect(j*80,i*50,80,50,pens.at(2),brush_N) );
              }
              else if (Plataformas[i][j]==50) {//agua
-                 agua.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(1))));
+                 agua.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(1),brush_A)));
              }
              else if (Plataformas[i][j]==51){//fuego
-                 fuego.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(0))));
+                 fuego.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(0),brush_F)));
              }
              else if (Plataformas[i][j]==52){//piso
-                 piso.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(3),brush1)));
+                 piso.push_back((niveles[i]->addRect(j*80,i*50,80,50,pens.at(3),brush_P)));
              }
              else if (Plataformas[i][j]==53){//PersonajePrincipal
 

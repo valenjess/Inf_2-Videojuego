@@ -61,7 +61,6 @@ private:
     array <vector<QGraphicsRectItem*>,3> pi;
 
     vector<QPen>pens;
-    QBrush brush1;
 
     int Plataformas[24][30];
 
