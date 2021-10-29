@@ -1,8 +1,6 @@
 #ifndef EARANIA_H
 #define EARANIA_H
 
-#include <QDebug>
-
 #include <QPainter>
 #include <QGraphicsView>
 #include <QStyleOptionGraphicsItem>
@@ -15,7 +13,7 @@
 class EArania : public QGraphicsItem
 {
 public:
-    EArania(float _degrees, float _LCuerda);
+    EArania(float _degrees, float _LCuerda, float PosIniX, float PosIniY);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
     void MovPendulo();
@@ -27,6 +25,8 @@ private:
     float degrees ;
     float radians;
     float LCuerda;
+    float PosIniX;
+    float PosIniY;
     float PosX = 0;
     float PosY = 0;
     int AnchImag, LarImag, cont = 1;

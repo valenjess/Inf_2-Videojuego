@@ -30,7 +30,7 @@ Juego::Juego(int level, QWidget *parent)
     lecturaMapa();
 
     //Creacion Personaje Principal
-    saltarin = new PersonajePrincipal(niveles[Nivel-1],norm[Nivel-1],roj[Nivel-1], azul[Nivel-1],pi[Nivel-1],20,-50);
+    saltarin = new PersonajePrincipal(niveles[Nivel-1],norm[Nivel-1],roj[Nivel-1], azul[Nivel-1],pi[Nivel-1],muroEnemigos,aran[Nivel-1],20,-50);
     niveles[Nivel-1]->addItem(saltarin);
 
     //Creacion Enemigo Principal
@@ -38,7 +38,6 @@ Juego::Juego(int level, QWidget *parent)
     for (int elemFuegoX=0 ;elemFuegoX<25 ;elemFuegoX++ ) {
         for (int elemFuegoY=7;elemFuegoY>0 ;elemFuegoY-- ) {
 
-        qDebug()<<"Fuego";
         Enemigo = new EnemigoPrincipal(elemFuegoX*90,-elemFuegoY*40,Nivel,RutImgEnemigo[Nivel-1]);
         niveles[Nivel-1]->addItem(Enemigo);
         muroEnemigos.push_back(Enemigo);
@@ -207,6 +206,7 @@ void Juego::Mov()
    }
 
    Time();
+   saltarin->seguir();
 
 
 }

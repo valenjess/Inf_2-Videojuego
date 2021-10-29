@@ -289,6 +289,7 @@ Makefile: ../juegoFinal/juegoFinal.pro C:/Users/Valentina/Downloads/6.2.0/mingw8
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/qt_config.prf \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/toolchain.prf \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/default_pre.prf \
@@ -318,7 +319,6 @@ Makefile: ../juegoFinal/juegoFinal.pro C:/Users/Valentina/Downloads/6.2.0/mingw8
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6Gui.prl \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6Core.prl \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/build_pass.prf \
 		../juegoFinal/pictures.qrc
 	$(QMAKE) -o Makefile ..\juegoFinal\juegoFinal.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" "CONFIG-=separate_debug_info"
@@ -541,6 +541,7 @@ C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/qt_functions.prf:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/qt_config.prf:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/win32-g++/qmake.conf:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/exclusive_builds.prf:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/toolchain.prf:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/default_pre.prf:
@@ -570,7 +571,6 @@ C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6Widgets.prl:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6Gui.prl:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6Core.prl:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 C:/Users/Valentina/Downloads/6.2.0/mingw81_64/mkspecs/features/build_pass.prf:
 ../juegoFinal/pictures.qrc:
 qmake: FORCE

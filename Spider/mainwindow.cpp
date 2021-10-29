@@ -12,12 +12,17 @@ MainWindow::MainWindow(QWidget *parent)
     QPen pen1(Qt::green, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
 
 
-    l.push_back( escenario->addEllipse(0,0,30,30,pen1));
+    l.push_back( escenario->addEllipse(0,0,10,10,pen1));
 
     EArania *arania1;
-    arania1 = new EArania(90.0,30.0);
+    EArania *arania2;
+    arania1 = new EArania(90.0,30.0,0,80);
+    arania2 = new EArania(90.0,30.0,0,0);
     escenario->addItem(arania1);
     spiders.push_back(arania1);
+
+    escenario->addItem(arania2);
+    spiders.push_back(arania2);
 
 
     ui->graphicsView->setScene(escenario);
@@ -40,6 +45,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*
 void MainWindow::movimiento()
 {
     static float degrees = 90;
@@ -75,6 +81,7 @@ void MainWindow::movimiento()
     qDebug()<<LCuerda*qSin(radians);
     qDebug()<<-LCuerda*qCos(radians);
 }
+*/
 
 void MainWindow::Posiciones()
 {

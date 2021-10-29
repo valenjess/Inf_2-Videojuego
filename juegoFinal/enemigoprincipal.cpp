@@ -1,6 +1,6 @@
 #include "enemigoprincipal.h"
 
-EnemigoPrincipal::EnemigoPrincipal(int _PosX, int _PosY, int _tiempo)
+EnemigoPrincipal::EnemigoPrincipal(int _PosX, int _PosY, int _tiempo, QString _RutImg)
 {
     filas = 0;
     columnas = 0;
@@ -8,11 +8,13 @@ EnemigoPrincipal::EnemigoPrincipal(int _PosX, int _PosY, int _tiempo)
     PosX=_PosX;
     PosY=_PosY;
 
-    pixmap = new QPixmap(":/Imagenes/fueguito.png");
+    RutImg = _RutImg;
+
+    pixmap = new QPixmap(RutImg);
 
 
-    ancho = 50;
-    alto = 95;
+    ancho = 167;
+    alto = 100;
 
     *pixmap=pixmap->scaled(4*ancho,alto);
 
@@ -33,31 +35,32 @@ void EnemigoPrincipal::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 void EnemigoPrincipal::animacion()
 {
     //qDebug()<<columnas;
-    if (columnas >= 156 ){
+    if (columnas >= 668 ){
         //qDebug()<<"hola";
         columnas = 0;
 
     }
     else if( sprid % 40 == 0){
-        columnas += 52;
+        columnas += 167;
 
     }
     setPixmap(*pixmap);
 
     sprid++;
-    int time=tiempo*100;
+    int time=300/tiempo;
 
 
     if(timeP % time == 0){
-        PosY++;
-        //qDebug()<<PosY;
+        PosY += 2;
+
         setPos(PosX,-PosY);
+
     }
     else if(timeP > time){
         timeP=1;
     }
     timeP++;
-    qDebug()<<timeP;
+
 
 
 }

@@ -23,7 +23,7 @@ public:
     ~MainWindow();
 
 public slots:
-      void movimiento();
+     // void movimiento();
       void Posiciones();
 
 private:

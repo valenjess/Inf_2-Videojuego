@@ -1,9 +1,11 @@
 #include "earania.h"
 
-EArania::EArania(float _angulo, float _LCuerda)
+EArania::EArania(float _angulo, float _LCuerda, float _PosIniX, float _PosIniY)
 {
     angulo = _angulo;
     LCuerda = _LCuerda;
+    PosIniX = _PosIniX;
+    PosIniY = _PosIniY;
     degrees = angulo;
     AnchImag = 116;
     LarImag = 106;
@@ -57,7 +59,7 @@ void EArania::MovPendulo()
 float EArania::getPosX()
 {
        MovPendulo();
-       PosX = LCuerda*qSin(radians);
+       PosX = (LCuerda*qSin(radians))+PosIniX;
 
        if (columnas >= 348 ){
 
@@ -77,7 +79,7 @@ float EArania::getPosX()
 
 float EArania::getPosY()
 {
-        PosY = -LCuerda*qCos(radians);
+        PosY = -(LCuerda*qCos(radians)-PosIniY);
         return PosY;
 }
 

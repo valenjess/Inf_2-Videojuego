@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>images/spiderman.png</file>
+        <file>../juegoFinal/Imagenes/fondoE1.png</file>
     </qresource>
 </RCC>

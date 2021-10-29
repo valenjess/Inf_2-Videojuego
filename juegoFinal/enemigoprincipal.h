@@ -19,7 +19,7 @@ using namespace std;
 class EnemigoPrincipal : public QGraphicsPixmapItem
 {
 public:
-    EnemigoPrincipal(int _PosX, int _PosY,int _tiempo);
+    EnemigoPrincipal(int _PosX, int _PosY,int _tiempo, QString _RutImg);
     QRectF boundingRect() const;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
@@ -36,14 +36,15 @@ public:
 private:
 
     int sprid = 1,timeP=1;
+    int PosX = 0, PosY = -10;    
+    int tiempo;
 
-
-    int PosX = 0, PosY = -10;
+    QString RutImg;
 
 
     QGraphicsScene *scene;
 
-    int tiempo;
+
 
 
 

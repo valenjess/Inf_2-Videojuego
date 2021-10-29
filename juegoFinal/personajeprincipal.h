@@ -1,7 +1,10 @@
 #ifndef PERSONAJEPRINCIPAL_H
 #define PERSONAJEPRINCIPAL_H
 #define GRAVEDAD 9.8
-#define VELINI 30.70
+#define VELINI 70.70
+
+#include "enemigoprincipal.h"
+#include "arania.h"
 
 #include <QGraphicsItem>
 #include <QGraphicsScene>
@@ -22,7 +25,7 @@ using namespace std;
 class PersonajePrincipal : public QGraphicsItem //QGraphicsPixmapItem //
 {
 public:
-    PersonajePrincipal(QGraphicsScene *_scene,vector <QGraphicsRectItem *> _muro,vector <QGraphicsRectItem *> _rojo,vector <QGraphicsRectItem *> _azul,vector <QGraphicsRectItem *> _suelo,int _PoX,int _PosY);
+    PersonajePrincipal(QGraphicsScene *_scene, vector <QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo, vector <QGraphicsRectItem *> _azul, vector <QGraphicsRectItem *> _suelo, vector <EnemigoPrincipal*> _muroEnemigos, vector<arania *> _EneAranias, int _PoX, int _PosY);
 
     QRectF boundingRect() const;
 
@@ -30,8 +33,7 @@ public:
 
     void movimiento();
 
-
-
+    void seguir(); //verifica si el personaje toca la lava->pierde
 
     void setDirX(int value);
 
@@ -52,6 +54,8 @@ public:
 
     float ancho;
     float alto;
+
+    bool ViveOMuere = true;
 
     QGraphicsRectItem *LadoDer,*LadoIzq,*LadoSup,*LadoInfer;
 
@@ -74,6 +78,8 @@ private:
     vector <QGraphicsRectItem *> rojo;
     vector <QGraphicsRectItem *> azul;
     vector <QGraphicsRectItem *> suelo;
+    vector <EnemigoPrincipal *> muroEnemigos;
+    vector <arania*> EneAranias;
 
 
     int PosX = 0, PosY = -55;
@@ -84,7 +90,7 @@ private:
     float Theta =0;
     float H =500;
 
-    float X = 0;
+    float X = 100;
     float Y = 0;
 
     int Estado = 0 ;
