@@ -13,6 +13,7 @@
 
 #include "personajeprincipal.h"
 #include "enemigoprincipal.h"
+#include "arania.h"
 
 using namespace std;
 QT_BEGIN_NAMESPACE
@@ -28,10 +29,8 @@ public:
     ~Juego();
     //mapa
     void lecturaMapa();
+
     //
-
-
-
 
     void setDataUno(const vector<array<QString, 6> > &value);
 
@@ -41,6 +40,8 @@ public:
 
 public slots:
     void Mov();
+    void MovEnemigo();
+    void Time();
 
 signals:
     void endGame();
@@ -48,13 +49,16 @@ signals:
 private:
     Ui::Juego *ui;
     QGraphicsScene *scene;
-    vector <EnemigoPrincipal *> muro;
+
+    vector <EnemigoPrincipal*> muroEnemigos;
 
     array <QGraphicsRectItem,5> *suelo;
 
     PersonajePrincipal *saltarin;
 
     EnemigoPrincipal *Enemigo;
+
+    arania *aranita;
 
 //mapa
     array <QGraphicsScene *,3> niveles;
@@ -65,13 +69,20 @@ private:
     array <vector<QGraphicsRectItem*>,3> roj;
     array <vector<QGraphicsRectItem*>,3> pi;
 
+    array <vector<arania*>,3> aran;
+
     vector<QPen>pens;
 
     int Plataformas[24][30];
 
+//Enemigo correspondiente al nivel
+
+    array<QString,3> RutImgEnemigo;
+
+
 //Nivel actual
     int Nivel ;
-
+    int ContTime = 0;
 
     vector<array<QString,6>> DataUno;
     vector<array<QString,10>> DataDos;
@@ -79,5 +90,6 @@ private:
 
 protected:
     void keyPressEvent(QKeyEvent *e);
+
 };
 #endif // JUEGO_H
