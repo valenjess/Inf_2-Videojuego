@@ -12,9 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLCDNumber>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -24,8 +26,12 @@ class Ui_Juego
 {
 public:
     QWidget *centralwidget;
-    QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
+    QLCDNumber *lcdNumber;
+    QLabel *label;
+    QLabel *label_2;
+    QLCDNumber *VidasLCD;
+    QPushButton *SalirButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -33,16 +39,41 @@ public:
     {
         if (Juego->objectName().isEmpty())
             Juego->setObjectName(QString::fromUtf8("Juego"));
+        Juego->setEnabled(true);
         Juego->resize(800, 600);
         centralwidget = new QWidget(Juego);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        gridLayout = new QGridLayout(centralwidget);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-
-        gridLayout->addWidget(graphicsView, 0, 0, 1, 1);
-
+        graphicsView->setGeometry(QRect(10, 40, 711, 511));
+        lcdNumber = new QLCDNumber(centralwidget);
+        lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
+        lcdNumber->setGeometry(QRect(643, 52, 61, 21));
+#if QT_CONFIG(accessibility)
+        lcdNumber->setAccessibleName(QString::fromUtf8(""));
+#endif // QT_CONFIG(accessibility)
+        lcdNumber->setDigitCount(3);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(530, 40, 111, 31));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Consolas")});
+        font.setPointSize(20);
+        label->setFont(font);
+        label->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(530, 80, 81, 20));
+        label_2->setFont(font);
+        label_2->setContextMenuPolicy(Qt::CustomContextMenu);
+        label_2->setText(QString::fromUtf8("Vidas"));
+        label_2->setTextInteractionFlags(Qt::NoTextInteraction);
+        VidasLCD = new QLCDNumber(centralwidget);
+        VidasLCD->setObjectName(QString::fromUtf8("VidasLCD"));
+        VidasLCD->setGeometry(QRect(640, 80, 64, 23));
+        SalirButton = new QPushButton(centralwidget);
+        SalirButton->setObjectName(QString::fromUtf8("SalirButton"));
+        SalirButton->setGeometry(QRect(630, 110, 80, 22));
         Juego->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Juego);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -60,6 +91,8 @@ public:
     void retranslateUi(QMainWindow *Juego)
     {
         Juego->setWindowTitle(QCoreApplication::translate("Juego", "Juego", nullptr));
+        label->setText(QCoreApplication::translate("Juego", "Tiempo", nullptr));
+        SalirButton->setText(QCoreApplication::translate("Juego", "SALIR", nullptr));
     } // retranslateUi
 
 };
