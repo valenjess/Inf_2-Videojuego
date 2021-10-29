@@ -39,8 +39,9 @@ Juego::Juego(int level, QWidget *parent)
         for (int elemFuegoY=7;elemFuegoY>0 ;elemFuegoY-- ) {
 
         Enemigo = new EnemigoPrincipal(elemFuegoX*90,-elemFuegoY*40,Nivel,RutImgEnemigo[Nivel-1]);
-        niveles[Nivel-1]->addItem(Enemigo);
         muroEnemigos.push_back(Enemigo);
+        Enemigo->setZValue(elemFuegoX+1000);
+        niveles[Nivel-1]->addItem(Enemigo);
 
         }
 

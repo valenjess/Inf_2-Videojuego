@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class EnemigoPrincipal : public QGraphicsPixmapItem
+class EnemigoPrincipal : public QGraphicsItem//QGraphicsPixmapItem
 {
 public:
     EnemigoPrincipal(int _PosX, int _PosY,int _tiempo, QString _RutImg);

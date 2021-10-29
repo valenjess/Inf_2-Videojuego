@@ -44,7 +44,7 @@ void EnemigoPrincipal::animacion()
         columnas += 167;
 
     }
-    setPixmap(*pixmap);
+   //setPixmap(*pixmap);
 
     sprid++;
     int time=300/tiempo;

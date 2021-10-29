@@ -22,7 +22,7 @@
 
 
 using namespace std;
-class PersonajePrincipal : public QGraphicsItem //QGraphicsPixmapItem //
+class PersonajePrincipal : public QGraphicsItem //QGraphicsPixmapItem
 {
 public:
     PersonajePrincipal(QGraphicsScene *_scene, vector <QGraphicsRectItem *> _muro, vector <QGraphicsRectItem *> _rojo, vector <QGraphicsRectItem *> _azul, vector <QGraphicsRectItem *> _suelo, vector <EnemigoPrincipal*> _muroEnemigos, vector<arania *> _EneAranias, int _PoX, int _PosY);

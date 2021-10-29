@@ -1,7 +1,9 @@
+release/agua.o
 release/arania.o
 release/dosini.o
 release/dosreg.o
 release/enemigoprincipal.o
+release/fuego.o
 release/jugarosalir.o
 release/main.o
 release/juego.o

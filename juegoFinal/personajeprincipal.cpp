@@ -182,7 +182,7 @@ void PersonajePrincipal::movimiento()
 
         for(auto Enemi:muroEnemigos){
 
-            qDebug()<<"Entra";
+
             LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),8,alto-6);//derecha
             LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),8,alto-6);//izquierda
             LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),ancho-3,4);//arriba
@@ -216,11 +216,12 @@ void PersonajePrincipal::movimiento()
 
         for(auto EneAra:EneAranias){
 
-            qDebug()<<"Entra";
+
             LadoDer = scene->addRect((X+ancho/2),-((Y+alto/2)-4),8,alto-6);//derecha
             LadoIzq = scene->addRect((X-ancho/2)-2,-((Y+alto/2)-4),8,alto-6);//izquierda
             LadoSup = scene->addRect((X-ancho/2),-((Y+alto/2)+2),ancho-3,4);//arriba
             LadoInfer = scene->addRect((X-ancho/2),-(Y-alto/2),ancho-3,4);//abajo
+
 
             if(LadoDer->collidesWithItem(EneAra)){
                 qDebug()<<"Araña";
@@ -278,7 +279,6 @@ void PersonajePrincipal::movimiento()
 
 void PersonajePrincipal::seguir()
 {
-    qDebug()<<"Entra";
 
 }
 

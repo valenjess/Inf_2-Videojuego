@@ -1,7 +1,9 @@
+debug/agua.o
 debug/arania.o
 debug/dosini.o
 debug/dosreg.o
 debug/enemigoprincipal.o
+debug/fuego.o
 debug/jugarosalir.o
 debug/main.o
 debug/juego.o

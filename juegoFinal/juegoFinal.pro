@@ -9,10 +9,12 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    agua.cpp \
     arania.cpp \
     dosini.cpp \
     dosreg.cpp \
     enemigoprincipal.cpp \
+    fuego.cpp \
     jugarosalir.cpp \
     main.cpp \
     juego.cpp \
@@ -24,10 +26,12 @@ SOURCES += \
     unreg.cpp
 
 HEADERS += \
+    agua.h \
     arania.h \
     dosini.h \
     dosreg.h \
     enemigoprincipal.h \
+    fuego.h \
     juego.h \
     jugarosalir.h \
     modojuego.h \
